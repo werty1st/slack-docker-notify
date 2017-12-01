@@ -24,7 +24,8 @@ if (DOCKER_HOST && DOCKER_TLS_VERIFY && DOCKER_CERT_PATH) {
 }
 
 else {
-  let docker = new Docker({socketPath: '/tmp/docker.sock'});
+  let docker = new Docker({socketPath: '/var/run/docker.sock'});
+  docker.getEvents(handleEvents);
   debug('starting unix socket connection to docker at: %s', '/tmp/docker.sock')
 }
 
